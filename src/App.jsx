@@ -42,7 +42,8 @@ function App() {
     }
   }
 
-  const isTerminalRoute = ['/terminal', '/terminal/'].includes(window.location.pathname)
+  const normalizedPath = window.location.pathname.toLowerCase().replace(/\/+$/, '')
+  const isTerminalRoute = normalizedPath.endsWith('/terminal')
 
   if (isTerminalRoute) {
     return (

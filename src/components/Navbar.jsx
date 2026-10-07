@@ -1,7 +1,7 @@
 import { Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ theme, onToggleTheme, isCtf = false }) {
-  const sectionPath = isCtf ? '/' : ''
+  const sectionPath = isCtf ? import.meta.env.BASE_URL : ''
 
   return (
     <header className="theme-nav fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-slate-800/60">

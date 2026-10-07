@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Folder, ExternalLink, GitBranch, X } from 'lucide-react';
 
+const PUBLIC_ASSET_BASE_URL = import.meta.env.BASE_URL;
+
 const CATEGORIES = ['All', 'Cybersecurity', 'Web Development', 'Homelab'];
 
 const PROJECTS = [
@@ -60,7 +62,7 @@ const CREDENTIALS_AND_AWARDS = [
     title: 'Outstanding Player (Top 5), PolyU CTF Qualifier Competition',
     issuer: 'The Hong Kong Polytechnic University',
     date: 'October 2025',
-    awardImage: '/Cert/Top5polyuctf.jpg',
+    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/Top5polyuctf.jpg`,
     details: 'Achieved Top 5 ranking in the official PolyU CTF qualifier competition focusing on web security, binary exploitation, and reverse engineering.',
   },
   {
@@ -79,7 +81,7 @@ const CREDENTIALS_AND_AWARDS = [
     title: 'Duke of Edinburgh International Silver Award',
     issuer: 'The Duke of Edinburgh\'s International Award',
     date: 'June 2024',
-    awardImage: '/Cert/doefiasilver.jpg',
+    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/doefiasilver.jpg`,
     details: 'Recognized for personal achievement in community service, physical recreation, skill development, and adventurous journeys.',
   },
   {
@@ -88,7 +90,7 @@ const CREDENTIALS_AND_AWARDS = [
     title: 'Duke of Edinburgh International Bronze Award',
     issuer: 'The Duke of Edinburgh\'s International Award',
     date: 'August 2023',
-    awardImage: '/Cert/doefiabronze.jpg',
+    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/doefiabronze.jpg`,
     details: 'Demonstrated commitment to self-development, outdoor exploration, and structured volunteer service.',
   },
 ];

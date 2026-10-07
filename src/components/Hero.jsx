@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
+const PUBLIC_ASSET_BASE_URL = import.meta.env.BASE_URL;
+
 const TECH_LOGOS = [
-  { name: 'Python', icon: '/logos/python-original.svg' },
-  { name: 'C++', icon: '/logos/cplusplus-original.svg' },
-  { name: 'JavaScript', icon: '/logos/javascript-original.svg' },
-  { name: 'React', icon: '/logos/react-original.svg' },
-  { name: 'Node.js', icon: '/logos/nodejs-original.svg' },
-  { name: 'Tailwind CSS', icon: '/logos/tailwindcss-original.svg' },
-  { name: 'HTML5', icon: '/logos/html5-original.svg' },
-  { name: 'CSS3', icon: '/logos/css3-original.svg' },
-  { name: 'Linux', icon: '/logos/linux-original.svg' },
-  { name: 'Git', icon: '/logos/git-original.svg' },
-  { name: 'Vite', icon: '/logos/vitejs-original.svg' },
-  { name: 'Java', icon: '/logos/java-original.svg' },
+  { name: 'Python', icon: `${PUBLIC_ASSET_BASE_URL}logos/python-original.svg` },
+  { name: 'C++', icon: `${PUBLIC_ASSET_BASE_URL}logos/cplusplus-original.svg` },
+  { name: 'JavaScript', icon: `${PUBLIC_ASSET_BASE_URL}logos/javascript-original.svg` },
+  { name: 'React', icon: `${PUBLIC_ASSET_BASE_URL}logos/react-original.svg` },
+  { name: 'Node.js', icon: `${PUBLIC_ASSET_BASE_URL}logos/nodejs-original.svg` },
+  { name: 'Tailwind CSS', icon: `${PUBLIC_ASSET_BASE_URL}logos/tailwindcss-original.svg` },
+  { name: 'HTML5', icon: `${PUBLIC_ASSET_BASE_URL}logos/html5-original.svg` },
+  { name: 'CSS3', icon: `${PUBLIC_ASSET_BASE_URL}logos/css3-original.svg` },
+  { name: 'Linux', icon: `${PUBLIC_ASSET_BASE_URL}logos/linux-original.svg` },
+  { name: 'Git', icon: `${PUBLIC_ASSET_BASE_URL}logos/git-original.svg` },
+  { name: 'Vite', icon: `${PUBLIC_ASSET_BASE_URL}logos/vitejs-original.svg` },
+  { name: 'Java', icon: `${PUBLIC_ASSET_BASE_URL}logos/java-original.svg` },
 ];
 
 const SKILLS = [
@@ -78,7 +80,7 @@ export default function Hero() {
         {/* Centered Minimal Action Links */}
         <div className="flex items-center justify-center pt-2 text-sm font-medium">
           <a
-            href="/Resume/YohanesHS_Resume.pdf"
+            href={`${PUBLIC_ASSET_BASE_URL}Resume/YohanesHS_Resume.pdf`}
             target="_blank"
             rel="noreferrer"
             className="group flex items-center gap-1.5 text-white hover:text-sky-400 transition-colors"
