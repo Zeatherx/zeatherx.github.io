@@ -1,16 +1,7 @@
 export default function Footer() {
-  const terminalPath = `${import.meta.env.BASE_URL}Terminal`
-
   return (
     <footer id="contact" className="border-t border-slate-800/60 bg-slate-950 px-6 py-5 sm:px-12">
       <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-4 text-sm">
-        <a
-          href={terminalPath}
-          className="footer-button rounded border border-slate-800 px-3 py-1.5 text-slate-400 transition-colors hover:border-sky-500/50 hover:bg-sky-500/10 hover:text-sky-400"
-        >
-          /Terminal
-        </a>
-
         <div className="flex items-center justify-center gap-2">
           <a
             href="https://linkedin.com/in/yohaneshs"

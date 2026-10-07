@@ -6,7 +6,6 @@ import Activities from './components/Activities'
 import Footer from './components/Footer'
 import ScrollReveal from './components/ScrollReveal'
 import Navbar from './components/Navbar'
-import Terminal from './components/Terminal'
 
 function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark')
@@ -43,17 +42,6 @@ function App() {
   }
 
   const normalizedPath = window.location.pathname.toLowerCase().replace(/\/+$/, '')
-  const isTerminalRoute = normalizedPath.endsWith('/terminal')
-
-  if (isTerminalRoute) {
-    return (
-      <div className={`app-shell theme-${theme} bg-slate-950 text-slate-100 min-h-screen`}>
-        <Terminal />
-        <Footer />
-        <Navbar theme={theme} onToggleTheme={toggleTheme} isCtf />
-      </div>
-    )
-  }
 
   return (
     <div className={`app-shell theme-${theme} bg-slate-950 text-slate-100 min-h-screen`}>
