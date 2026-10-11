@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "title": "NuttyShell Challenge Developments",
+      "description": "Custom CTF challenge environments built with Docker setup scripts and vulnerable endpoint simulations.",
+      "category": ["Cybersecurity", "CTF", "Docker"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Full-Stack Web Application",
+      "description": "Responsive web platform constructed with React, Node.js, and Tailwind CSS for modern user workflows.",
+      "category": ["Web Development", "React", "Node.js"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Home Lab Monitoring Dashboard",
+      "description": "A lightweight dashboard for tracking services, system health, and network activity across a personal lab.",
+      "category": ["Homelab", "Web Development", "React"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Secure API Playground",
+      "description": "A practice API environment for exploring authentication, input validation, and common web security issues.",
+      "category": ["Cybersecurity", "Web Development", "Node.js"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Linux Services Lab",
+      "description": "Containerized Linux services used to practice deployment, hardening, logging, and incident investigation.",
+      "category": ["Homelab", "Cybersecurity", "Docker"],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    }
+  ]
+}

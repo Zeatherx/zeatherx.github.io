@@ -1,99 +1,12 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Folder, ExternalLink, GitBranch, X } from 'lucide-react';
-
-const PUBLIC_ASSET_BASE_URL = import.meta.env.BASE_URL;
+import projectsData from '../data/projects.json';
+import credentialsData from '../data/credentials.json';
 
 const CATEGORIES = ['All', 'Cybersecurity', 'Web Development', 'Homelab'];
-
-const PROJECTS = [
-  {
-    title: 'NuttyShell Challenge Developments',
-    description: 'Custom CTF challenge environments built with Docker setup scripts and vulnerable endpoint simulations.',
-    category: ['Cybersecurity', 'CTF', 'Docker'],
-    githubUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Full-Stack Web Application',
-    description: 'Responsive web platform constructed with React, Node.js, and Tailwind CSS for modern user workflows.',
-    category: ['Web Development', 'React', 'Node.js'],
-    githubUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Home Lab Monitoring Dashboard',
-    description: 'A lightweight dashboard for tracking services, system health, and network activity across a personal lab.',
-    category: ['Homelab', 'Web Development', 'React'],
-    githubUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Secure API Playground',
-    description: 'A practice API environment for exploring authentication, input validation, and common web security issues.',
-    category: ['Cybersecurity', 'Web Development', 'Node.js'],
-    githubUrl: '#',
-    liveUrl: '#',
-  },
-  {
-    title: 'Linux Services Lab',
-    description: 'Containerized Linux services used to practice deployment, hardening, logging, and incident investigation.',
-    category: ['Homelab', 'Cybersecurity', 'Docker'],
-    githubUrl: '#',
-    liveUrl: '#',
-  },
-];
-
-// Combined Certifications & Awards Data
-const CREDENTIALS_AND_AWARDS = [
-  {
-    id: 'comptia-security-plus',
-    type: 'Certification',
-    title: 'CompTIA Security+',
-    issuer: 'CompTIA',
-    date: 'Jul 2026',
-    verifyUrl: 'https://cp.certmetrics.com/CompTIA/en/public/verify/credential/78e37804ad724a109748fa24486c9b89',
-    issuerLogo: '',
-    details: 'CompTIA Security+ certification covering core cybersecurity skills, threats, vulnerabilities, security operations, and risk management.',
-  },
-  {
-    id: 'polyu-ctf',
-    type: 'Award',
-    title: 'Outstanding Player (Top 5), PolyU CTF Qualifier Competition',
-    issuer: 'The Hong Kong Polytechnic University',
-    date: 'October 2025',
-    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/Top5polyuctf.jpg`,
-    details: 'Achieved Top 5 ranking in the official PolyU CTF qualifier competition focusing on web security, binary exploitation, and reverse engineering.',
-  },
-  {
-    id: 'google-cyber',
-    type: 'Certification',
-    title: 'Google Cybersecurity',
-    issuer: 'Credential ID VJ0LMGPJM76C',
-    date: 'June 2025',
-    verifyUrl: 'https://www.coursera.org/account/accomplishments/professional-cert/VJ0LMGPJM76C',
-    issuerLogo: '',
-    details: 'Completed Google Cybersecurity Certificate covering core cybersecurity concepts, common threats, and practical risk-reduction approaches to help protect organizational systems and data.',
-  },
-  {
-    id: 'dofe-silver',
-    type: 'Award',
-    title: 'Duke of Edinburgh International Silver Award',
-    issuer: 'The Duke of Edinburgh\'s International Award',
-    date: 'June 2024',
-    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/doefiasilver.jpg`,
-    details: 'Recognized for personal achievement in community service, physical recreation, skill development, and adventurous journeys.',
-  },
-  {
-    id: 'dofe-bronze',
-    type: 'Award',
-    title: 'Duke of Edinburgh International Bronze Award',
-    issuer: 'The Duke of Edinburgh\'s International Award',
-    date: 'August 2023',
-    awardImage: `${PUBLIC_ASSET_BASE_URL}Cert/doefiabronze.jpg`,
-    details: 'Demonstrated commitment to self-development, outdoor exploration, and structured volunteer service.',
-  },
-];
+const PROJECTS = projectsData.items;
+const CREDENTIALS_AND_AWARDS = credentialsData.items;
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');

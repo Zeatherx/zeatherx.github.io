@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: Zeatherx/zeatherx.github.io
+  branch: main
+
+media_folder: public/Cert
+public_folder: /Cert
+
+collections:
+  - name: projects
+    label: Projects
+    files:
+      - name: entries
+        label: Project Entries
+        file: src/data/projects.json
+        fields:
+          - name: items
+            label: Projects
+            widget: list
+            fields:
+              - name: title
+                label: Title
+                widget: string
+              - name: description
+                label: Description
+                widget: text
+              - name: category
+                label: Categories
+                widget: list
+                field:
+                  name: category
+                  label: Category
+                  widget: string
+              - name: githubUrl
+                label: GitHub URL
+                widget: string
+              - name: liveUrl
+                label: Live URL
+                widget: string
+
+  - name: credentials
+    label: Credentials and Awards
+    files:
+      - name: entries
+        label: Credential Entries
+        file: src/data/credentials.json
+        fields:
+          - name: items
+            label: Credentials and Awards
+            widget: list
+            fields:
+              - name: id
+                label: ID
+                widget: string
+              - name: type
+                label: Type
+                widget: select
+                options:
+                  - Certification
+                  - Award
+              - name: title
+                label: Title
+                widget: string
+              - name: issuer
+                label: Issuer
+                widget: string
+              - name: date
+                label: Date
+                widget: string
+              - name: verifyUrl
+                label: Verification URL
+                widget: string
+                required: false
+              - name: issuerLogo
+                label: Issuer Logo
+                widget: image
+                required: false
+              - name: awardImage
+                label: Award Image
+                widget: image
+                required: false
+              - name: details
+                label: Details
+                widget: text
+
+  - name: activities
+    label: Activities
+    files:
+      - name: entries
+        label: Activity Entries
+        file: src/data/activities.json
+        fields:
+          - name: items
+            label: Activities
+            widget: list
+            fields:
+              - name: category
+                label: Category
+                widget: string
+              - name: title
+                label: Title
+                widget: string
+              - name: organization
+                label: Organization
+                widget: string
+              - name: period
+                label: Period
+                widget: string
+              - name: icon
+                label: Icon
+                widget: select
+                options:
+                  - shield-check
+                  - users
+                  - compass
+              - name: highlights
+                label: Highlights
+                widget: list
+                field:
+                  name: highlight
+                  label: Highlight
+                  widget: string

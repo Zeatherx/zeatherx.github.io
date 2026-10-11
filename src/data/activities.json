@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "category": "University",
+      "title": "Active Member",
+      "organization": "NuttyShell (PolyU CTF Team)",
+      "period": "Aug 2025 - Present",
+      "icon": "shield-check",
+      "highlights": [
+        "Contributed to challenge development for the team's annual open CTF competition.",
+        "Used GitHub workflows (branches, pull requests, reviews) and worked with Docker for building/testing environments.",
+        "Represented PolyU in CTF competitions, collaborating with teammates to solve security challenges under time constraints."
+      ]
+    },
+    {
+      "category": "High School Leadership",
+      "title": "Coordinator of Technology, Info & Comm Development",
+      "organization": "SMAK PENABUR Gading Serpong Student Council",
+      "period": "High School",
+      "icon": "users",
+      "highlights": [
+        "Led tech and digital communications strategy for school events and council initiatives."
+      ]
+    },
+    {
+      "category": "High School Leadership",
+      "title": "Scout Patrol Leader (Dewan Ambalan)",
+      "organization": "SMAK PENABUR Gading Serpong Scout",
+      "period": "High School",
+      "icon": "compass",
+      "highlights": [
+        "Organized outdoor activities, managed team coordination, and demonstrated leadership in scout operations."
+      ]
+    }
+  ]
+}

@@ -1,39 +1,11 @@
-import { ShieldCheck, Users, Compass } from 'lucide-react'
+import { Compass, ShieldCheck, Users } from 'lucide-react'
+import activitiesData from '../data/activities.json'
 
-const activitiesData = [
-  {
-    category: "University",
-    title: "Active Member",
-    organization: "NuttyShell (PolyU CTF Team)",
-    period: "Aug 2025 - Present",
-    icon: ShieldCheck,
-    highlights: [
-      "Contributed to challenge development for the team's annual open CTF competition.",
-      "Used GitHub workflows (branches, pull requests, reviews) and worked with Docker for building/testing environments.",
-      "Represented PolyU in CTF competitions, collaborating with teammates to solve security challenges under time constraints."
-    ]
-  },
-  {
-    category: "High School Leadership",
-    title: "Coordinator of Technology, Info & Comm Development",
-    organization: "SMAK PENABUR Gading Serpong Student Council",
-    period: "High School",
-    icon: Users,
-    highlights: [
-      "Led tech and digital communications strategy for school events and council initiatives."
-    ]
-  },
-  {
-    category: "High School Leadership",
-    title: "Scout Patrol Leader (Dewan Ambalan)",
-    organization: "SMAK PENABUR Gading Serpong Scout",
-    period: "High School",
-    icon: Compass,
-    highlights: [
-      "Organized outdoor activities, managed team coordination, and demonstrated leadership in scout operations."
-    ]
-  }
-]
+const ICONS = {
+  'shield-check': ShieldCheck,
+  users: Users,
+  compass: Compass,
+}
 
 export default function Activities() {
   return (
@@ -44,8 +16,8 @@ export default function Activities() {
           <h2 className="text-3xl font-medium text-white">Activities & Leadership</h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {activitiesData.map((act, index) => {
-          const Icon = act.icon
+        {activitiesData.items.map((act, index) => {
+          const Icon = ICONS[act.icon] || ShieldCheck
           return (
             <div key={index} className="border-t border-slate-800/60 px-1 py-6 flex flex-col justify-between">
               <div>
