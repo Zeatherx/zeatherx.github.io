@@ -4,9 +4,10 @@ import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Folder, ExternalLink
 import projectsData from '../data/projects.json';
 import credentialsData from '../data/credentials.json';
 
-const CATEGORIES = ['All', 'Cybersecurity', 'Web Development', 'Homelab'];
+const CATEGORIES = ['All', 'Cybersecurity', 'Web Development', 'Random'];
 const PROJECTS = projectsData.items;
 const CREDENTIALS_AND_AWARDS = credentialsData.items;
+const hasProjectUrl = (url) => typeof url === 'string' && url.trim() !== '' && url.trim() !== '#';
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -105,12 +106,12 @@ export default function Projects() {
                   <div className="flex items-center justify-between text-slate-400">
                     <Folder className="w-5 h-5 text-sky-400" />
                     <div className="flex items-center gap-3">
-                      {project.githubUrl && (
+                      {hasProjectUrl(project.githubUrl) && (
                         <a href={project.githubUrl} className="hover:text-white transition-colors" aria-label="GitHub Link">
                           <GitBranch className="w-4 h-4" />
                         </a>
                       )}
-                      {project.liveUrl && (
+                      {hasProjectUrl(project.liveUrl) && (
                         <a href={project.liveUrl} className="hover:text-white transition-colors" aria-label="Live Demo Link">
                           <ExternalLink className="w-4 h-4" />
                         </a>
