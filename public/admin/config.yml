@@ -120,3 +120,44 @@ collections:
                   name: highlight
                   label: Highlight
                   widget: string
+
+  - name: skills_and_tech
+    label: Skills & Tech Logos
+    files:
+      - name: entries
+        label: Skills & Technologies
+        file: src/data/skills.json
+        format: json
+        fields:
+          - name: items
+            label: Skills & Technologies
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: icon, label: Icon / Image Path, widget: image, required: false }
+
+  - name: hero_titles
+    label: Hero Rotating Titles
+    files:
+      - name: entries
+        label: Hero Rotating Titles
+        file: src/data/hero_titles.json
+        format: json
+        fields:
+          - name: titles
+            label: Titles
+            widget: list
+            field: { name: title, label: Title, widget: string }
+
+  - name: project_categories
+    label: Project Filter Categories
+    files:
+      - name: entries
+        label: Project Filter Categories
+        file: src/data/categories.json
+        format: json
+        fields:
+          - name: categories
+            label: Categories
+            widget: list
+            field: { name: category, label: Category Name, widget: string }

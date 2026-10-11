@@ -1,0 +1,22 @@
+{
+  "items": [
+    { "name": "Python", "icon": "/logos/python-original.svg" },
+    { "name": "C++", "icon": "/logos/cplusplus-original.svg" },
+    { "name": "JavaScript", "icon": "/logos/javascript-original.svg" },
+    { "name": "React", "icon": "/logos/react-original.svg" },
+    { "name": "Node.js", "icon": "/logos/nodejs-original.svg" },
+    { "name": "Tailwind CSS", "icon": "/logos/tailwindcss-original.svg" },
+    { "name": "HTML5", "icon": "/logos/html5-original.svg" },
+    { "name": "CSS3", "icon": "/logos/css3-original.svg" },
+    { "name": "Linux", "icon": "/logos/linux-original.svg" },
+    { "name": "Git", "icon": "/logos/git-original.svg" },
+    { "name": "Vite", "icon": "/logos/vitejs-original.svg" },
+    { "name": "Java", "icon": "/logos/java-original.svg" },
+    { "name": "Web Development" },
+    { "name": "Penetration Testing" },
+    { "name": "CTF Competitions" },
+    { "name": "Network Security" },
+    { "name": "System Administration" },
+    { "name": "Secure Coding" }
+  ]
+}

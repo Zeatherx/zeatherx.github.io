@@ -1,33 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import skillsData from '../data/skills.json';
+import heroTitlesData from '../data/hero_titles.json';
 
 const PUBLIC_ASSET_BASE_URL = import.meta.env.BASE_URL;
-
-const TECH_LOGOS = [
-  { name: 'Python', icon: `${PUBLIC_ASSET_BASE_URL}logos/python-original.svg` },
-  { name: 'C++', icon: `${PUBLIC_ASSET_BASE_URL}logos/cplusplus-original.svg` },
-  { name: 'JavaScript', icon: `${PUBLIC_ASSET_BASE_URL}logos/javascript-original.svg` },
-  { name: 'React', icon: `${PUBLIC_ASSET_BASE_URL}logos/react-original.svg` },
-  { name: 'Node.js', icon: `${PUBLIC_ASSET_BASE_URL}logos/nodejs-original.svg` },
-  { name: 'Tailwind CSS', icon: `${PUBLIC_ASSET_BASE_URL}logos/tailwindcss-original.svg` },
-  { name: 'HTML5', icon: `${PUBLIC_ASSET_BASE_URL}logos/html5-original.svg` },
-  { name: 'CSS3', icon: `${PUBLIC_ASSET_BASE_URL}logos/css3-original.svg` },
-  { name: 'Linux', icon: `${PUBLIC_ASSET_BASE_URL}logos/linux-original.svg` },
-  { name: 'Git', icon: `${PUBLIC_ASSET_BASE_URL}logos/git-original.svg` },
-  { name: 'Vite', icon: `${PUBLIC_ASSET_BASE_URL}logos/vitejs-original.svg` },
-  { name: 'Java', icon: `${PUBLIC_ASSET_BASE_URL}logos/java-original.svg` },
-];
-
-const SKILLS = [
-  'Web Development',
-  'Penetration Testing',
-  'CTF Competitions',
-  'Network Security',
-  'System Administration',
-  'Secure Coding',
-];
-
-const TITLES = ['Web Development', 'Cybersecurity'];
+const TECH_LOGOS = skillsData.items
+  .filter((item) => item.icon)
+  .map((tech) => ({ ...tech, icon: `${PUBLIC_ASSET_BASE_URL}${tech.icon.slice(1)}` }));
+const SKILLS = skillsData.items.filter((item) => !item.icon).map((skill) => skill.name);
+const TITLES = heroTitlesData.titles.length > 0 ? heroTitlesData.titles : ['Developer'];
 
 export default function Hero() {
   const [title, setTitle] = useState('');
@@ -82,11 +63,11 @@ export default function Hero() {
           <a
             href={`${PUBLIC_ASSET_BASE_URL}Resume/YohanesHS_Resume.pdf`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="group flex items-center gap-1.5 text-white hover:text-sky-400 transition-colors"
           >
             <span>View Resume</span>
-            <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" />
+            <ArrowUpRight aria-hidden="true" className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" />
           </a>
         </div>
       </div>
@@ -99,12 +80,15 @@ export default function Hero() {
           <div className="animate-scroll-right flex gap-10 items-center">
             {[...TECH_LOGOS, ...TECH_LOGOS].map((tech, idx) => (
               <div
-                key={idx}
+                key={`${tech.name}-${idx}`}
                 className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-sky-400 transition-colors whitespace-nowrap grayscale hover:grayscale-0"
               >
                 <img
                   src={tech.icon}
                   alt={tech.name}
+                  width="20"
+                  height="20"
+                  loading="lazy"
                   className="w-5 h-5 object-contain"
                 />
                 <span>{tech.name}</span>
@@ -117,7 +101,7 @@ export default function Hero() {
         <div className="carousel-fade overflow-hidden py-1">
           <div className="animate-scroll-left flex gap-8 items-center text-xs font-mono text-slate-500 justify-center">
             {[...SKILLS, ...SKILLS].map((skill, idx) => (
-              <span key={idx} className="hover:text-slate-300 transition-colors whitespace-nowrap">
+              <span key={`${skill}-${idx}`} className="hover:text-slate-300 transition-colors whitespace-nowrap">
                 {skill}
               </span>
             ))}

@@ -18,6 +18,42 @@
       ],
       "githubUrl": "https://github.com/Zeatherx/HanziTranslator",
       "liveUrl": "https://hanzitranslator.vercel.app/"
+<<<<<<< HEAD
+=======
+    },
+    {
+      "title": "Home Lab Monitoring Dashboard",
+      "description": "A lightweight dashboard for tracking services, system health, and network activity across a personal lab.",
+      "category": [
+        "Random",
+        "Web Development",
+        "React"
+      ],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Secure API Playground",
+      "description": "A practice API environment for exploring authentication, input validation, and common web security issues.",
+      "category": [
+        "Cybersecurity",
+        "Web Development",
+        "Node.js"
+      ],
+      "githubUrl": "#",
+      "liveUrl": "#"
+    },
+    {
+      "title": "Linux Services Lab",
+      "description": "Containerized Linux services used to practice deployment, hardening, logging, and incident investigation.",
+      "category": [
+        "Random",
+        "Cybersecurity",
+        "Docker"
+      ],
+      "githubUrl": "#",
+      "liveUrl": "#"
+>>>>>>> d047571 (Update Admin Panel)
     }
   ]
 }

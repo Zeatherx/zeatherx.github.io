@@ -16,13 +16,13 @@ export default function Activities() {
           <h2 className="text-3xl font-medium text-white">Activities & Leadership</h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {activitiesData.items.map((act, index) => {
+        {activitiesData.items.map((act) => {
           const Icon = ICONS[act.icon] || ShieldCheck
           return (
-            <div key={index} className="border-t border-slate-800/60 px-1 py-6 flex flex-col justify-between">
+            <div key={`${act.organization}-${act.title}`} className="border-t border-slate-800/60 px-1 py-6 flex flex-col justify-between">
               <div>
                 <div className="mb-4 flex items-center gap-3 text-sky-400">
-                  <Icon className="w-6 h-6" />
+                  <Icon className="w-6 h-6" aria-hidden="true" />
                   <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
                     {act.category}
                   </span>
@@ -31,8 +31,8 @@ export default function Activities() {
                 <p className="mt-1 text-sm font-medium text-sky-400/90">{act.organization}</p>
                 <p className="text-xs text-slate-500 mb-4">{act.period}</p>
                 <ul className="list-disc list-inside space-y-2 text-sm text-slate-300">
-                  {act.highlights.map((point, i) => (
-                    <li key={i}>{point}</li>
+                  {act.highlights.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
                 </ul>
               </div>

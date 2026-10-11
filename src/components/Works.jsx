@@ -3,8 +3,9 @@ import { createPortal } from 'react-dom';
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Folder, ExternalLink, GitBranch, X } from 'lucide-react';
 import projectsData from '../data/projects.json';
 import credentialsData from '../data/credentials.json';
+import categoriesData from '../data/categories.json';
 
-const CATEGORIES = ['All', 'Cybersecurity', 'Web Development', 'Random'];
+const CATEGORIES = categoriesData.categories;
 const PROJECTS = projectsData.items;
 const CREDENTIALS_AND_AWARDS = credentialsData.items;
 const hasProjectUrl = (url) => typeof url === 'string' && url.trim() !== '' && url.trim() !== '#';
@@ -39,12 +40,18 @@ export default function Projects() {
   const filteredProjects = selectedCategory === 'All'
     ? PROJECTS
     : PROJECTS.filter((p) => p.category.includes(selectedCategory));
+  const hasFilteredProjects = filteredProjects.length > 0;
+  const visibleProjectIndex = hasFilteredProjects
+    ? Math.min(activeProjectIndex, filteredProjects.length - 1)
+    : 0;
 
   const showPreviousProject = () => {
+    if (!hasFilteredProjects) return;
     setActiveProjectIndex((currentIndex) => (currentIndex - 1 + filteredProjects.length) % filteredProjects.length);
   };
 
   const showNextProject = () => {
+    if (!hasFilteredProjects) return;
     setActiveProjectIndex((currentIndex) => (currentIndex + 1) % filteredProjects.length);
   };
 
@@ -86,8 +93,8 @@ export default function Projects() {
 
             <div className="coverflow-viewport" aria-live="polite">
               <div className="coverflow-track">
-                {filteredProjects.map((project, idx) => {
-                  const offset = idx - activeProjectIndex;
+                {hasFilteredProjects ? filteredProjects.map((project, idx) => {
+                  const offset = idx - visibleProjectIndex;
                   const normalizedOffset = offset > filteredProjects.length / 2
                     ? offset - filteredProjects.length
                     : offset < -filteredProjects.length / 2
@@ -101,19 +108,29 @@ export default function Projects() {
                       className={`coverflow-card ${normalizedOffset === 0 ? 'is-active' : ''}`}
                       style={{ '--card-offset': normalizedOffset, '--card-distance': distance }}
                       onClick={() => setActiveProjectIndex(idx)}
+                      onKeyDown={(event) => {
+                        if (event.target.closest('a, button')) return;
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setActiveProjectIndex(idx);
+                        }
+                      }}
+                      tabIndex="0"
+                      role="button"
+                      aria-label={`Show ${project.title}`}
                     >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-slate-400">
                     <Folder className="w-5 h-5 text-sky-400" />
                     <div className="flex items-center gap-3">
                       {hasProjectUrl(project.githubUrl) && (
-                        <a href={project.githubUrl} className="hover:text-white transition-colors" aria-label="GitHub Link">
-                          <GitBranch className="w-4 h-4" />
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label={`${project.title} GitHub repository`}>
+                          <GitBranch className="w-4 h-4" aria-hidden="true" />
                         </a>
                       )}
                       {hasProjectUrl(project.liveUrl) && (
-                        <a href={project.liveUrl} className="hover:text-white transition-colors" aria-label="Live Demo Link">
-                          <ExternalLink className="w-4 h-4" />
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" aria-label={`${project.title} live demo`}>
+                          <ExternalLink className="w-4 h-4" aria-hidden="true" />
                         </a>
                       )}
                     </div>
@@ -128,15 +145,17 @@ export default function Projects() {
 
                 {/* Genre Tags */}
                 <div className="flex flex-wrap gap-2 pt-6">
-                  {project.category.map((tag, tagIdx) => (
-                    <span key={tagIdx} className="text-[11px] font-mono text-sky-400/90 bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded">
+                  {project.category.map((tag) => (
+                    <span key={tag} className="text-[11px] font-mono text-sky-400/90 bg-sky-500/10 border border-sky-500/20 px-2.5 py-1 rounded">
                       {tag}
                     </span>
                   ))}
                 </div>
                     </article>
                   );
-                })}
+                }) : (
+                  <p className="py-12 text-center text-sm text-slate-400">No projects are available in this category.</p>
+                )}
               </div>
             </div>
 
@@ -146,10 +165,10 @@ export default function Projects() {
           </div>
 
           <p className="coverflow-caption">
-            <span>{String(activeProjectIndex + 1).padStart(2, '0')}</span>
+            <span>{String(hasFilteredProjects ? visibleProjectIndex + 1 : 0).padStart(2, '0')}</span>
             <span className="coverflow-caption-line" />
             <span>{String(filteredProjects.length).padStart(2, '0')}</span>
-            <span className="sr-only">{filteredProjects[activeProjectIndex]?.title}</span>
+            <span className="sr-only">{filteredProjects[visibleProjectIndex]?.title}</span>
           </p>
         </div>
 
@@ -164,32 +183,39 @@ export default function Projects() {
             {CREDENTIALS_AND_AWARDS.map((item) => (
               <div key={item.id} className="py-5 space-y-2">
                 <div
-                  onClick={() => toggleItem(item.id)}
-                  className="flex items-start justify-between cursor-pointer group"
+                  className="flex items-start justify-between group"
                 >
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <h3 className="text-base text-slate-200 group-hover:text-sky-400 transition-colors font-sans">
-                        {item.title}
-                      </h3>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-400 border border-slate-700/50">
-                        {item.type}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-xs text-slate-400 font-sans">
-                      {item.issuerLogo && (
-                        <img
-                          src={item.issuerLogo}
-                          alt={`${item.issuer} logo`}
-                          className="w-5 h-5 object-contain"
-                        />
-                      )}
-                      <span>{item.issuer}</span>
-                      <span>•</span>
-                      <span>{item.date}</span>
-                    </div>
-
+                  <div className="min-w-0 flex-1">
+                    <button
+                      type="button"
+                      onClick={() => toggleItem(item.id)}
+                      className="w-full text-left"
+                      aria-expanded={expandedItem === item.id}
+                    >
+                      <div className="flex items-center gap-2">
+                        <h3 className="text-base text-slate-200 group-hover:text-sky-400 transition-colors font-sans">
+                          {item.title}
+                        </h3>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800/80 text-slate-400 border border-slate-700/50">
+                          {item.type}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-slate-400 font-sans">
+                        {item.issuerLogo && (
+                          <img
+                            src={item.issuerLogo}
+                            alt={`${item.issuer} logo`}
+                            width="20"
+                            height="20"
+                            loading="lazy"
+                            className="w-5 h-5 object-contain"
+                          />
+                        )}
+                        <span>{item.issuer}</span>
+                        <span>•</span>
+                        <span>{item.date}</span>
+                      </div>
+                    </button>
                     {(item.verifyUrl || item.awardImage) && (
                       item.awardImage ? (
                         <button
@@ -207,8 +233,7 @@ export default function Projects() {
                         <a
                           href={item.verifyUrl}
                           target="_blank"
-                          rel="noreferrer"
-                          onClick={(e) => e.stopPropagation()}
+                          rel="noopener noreferrer"
                           className="inline-block text-xs font-sans italic text-slate-400 hover:text-sky-400 underline pt-1"
                         >
                           View credentials
@@ -217,7 +242,13 @@ export default function Projects() {
                     )}
                   </div>
 
-                  <button className="text-slate-400 hover:text-white p-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleItem(item.id)}
+                    className="text-slate-400 hover:text-white p-1"
+                    aria-label={`${expandedItem === item.id ? 'Collapse' : 'Expand'} ${item.title}`}
+                    aria-expanded={expandedItem === item.id}
+                  >
                     {expandedItem === item.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                 </div>
@@ -272,6 +303,9 @@ export default function Projects() {
                 <img
                   src={selectedAward.awardImage}
                   alt={`${selectedAward.title} award certificate`}
+                  width="760"
+                  height="540"
+                  loading="lazy"
                   onLoad={() => setAwardImageStatus('loaded')}
                   onError={() => setAwardImageStatus('error')}
                   className={`max-h-[70vh] w-full rounded-lg object-contain ${awardImageStatus === 'loading' ? 'opacity-0' : 'opacity-100'}`}
