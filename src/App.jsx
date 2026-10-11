@@ -41,16 +41,16 @@ function App() {
     }
   }
 
-  const normalizedPath = window.location.pathname.toLowerCase().replace(/\/+$/, '')
-
   return (
-    <div className={`app-shell theme-${theme} bg-slate-950 text-slate-100 min-h-screen`}>
-      <ScrollReveal><Hero /></ScrollReveal>
-      <ScrollReveal><Works /></ScrollReveal>
-      <ScrollReveal><Activities /></ScrollReveal>
-      <ScrollReveal><Footer /></ScrollReveal>
+    <>
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
-    </div>
+      <main className={`app-shell theme-${theme} min-h-screen bg-slate-950 text-slate-100`}>
+        <ScrollReveal><Hero /></ScrollReveal>
+        <ScrollReveal><Works /></ScrollReveal>
+        <ScrollReveal><Activities /></ScrollReveal>
+        <ScrollReveal><Footer /></ScrollReveal>
+      </main>
+    </>
   )
 }
 

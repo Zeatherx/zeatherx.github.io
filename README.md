@@ -9,3 +9,4 @@ Live site: [zeatherx.github.io](https://zeatherx.github.io/)
 * **Languages:** JavaScript (JSX), HTML, CSS
 * **Framework:** [React](https://react.dev/)
 * **Build Tool:** [Vite](https://vite.dev/)
+* **Content Management System:** [Sveltia CMS](https://sveltiacms.app/en/)

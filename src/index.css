@@ -119,35 +119,29 @@ footer[id] {
   background: rgba(248, 250, 252, 0.84);
 }
 
-.project-scroll,
 .credential-scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
 }
 
-.project-scroll::-webkit-scrollbar,
 .credential-scroll::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
-.project-scroll::-webkit-scrollbar-track,
 .credential-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.project-scroll::-webkit-scrollbar-thumb,
 .credential-scroll::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: rgba(148, 163, 184, 0.45);
 }
 
-.project-scroll:hover,
 .credential-scroll:hover {
   scrollbar-color: rgba(56, 189, 248, 0.7) transparent;
 }
 
-.project-scroll:hover::-webkit-scrollbar-thumb,
 .credential-scroll:hover::-webkit-scrollbar-thumb {
   background: rgba(56, 189, 248, 0.7);
 }
@@ -227,6 +221,12 @@ footer[id] {
   border-color: rgba(56, 189, 248, 0.7);
   background: rgba(14, 116, 144, 0.35);
   transform: scale(1.08);
+}
+
+.coverflow-arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  transform: none;
 }
 
 .coverflow-caption {
@@ -393,9 +393,4 @@ footer[id] {
     black 84%,
     transparent 100%
   );
-}
-
-@keyframes progress {
-  from { width: 0%; }
-  to { width: 100%; }
 }

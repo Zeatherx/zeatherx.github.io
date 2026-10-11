@@ -9,6 +9,14 @@ const TECH_LOGOS = skillsData.items
   .map((tech) => ({ ...tech, icon: `${PUBLIC_ASSET_BASE_URL}${tech.icon.slice(1)}` }));
 const SKILLS = skillsData.items.filter((item) => !item.icon).map((skill) => skill.name);
 const TITLES = heroTitlesData.titles;
+const MARQUEE_TECH_LOGOS = [
+  ...TECH_LOGOS.map((tech) => ({ ...tech, marqueeKey: `${tech.name}-first` })),
+  ...TECH_LOGOS.map((tech) => ({ ...tech, marqueeKey: `${tech.name}-second` })),
+];
+const MARQUEE_SKILLS = [
+  ...SKILLS.map((skill) => ({ name: skill, marqueeKey: `${skill}-first` })),
+  ...SKILLS.map((skill) => ({ name: skill, marqueeKey: `${skill}-second` })),
+];
 
 export default function Hero() {
   const [title, setTitle] = useState('');
@@ -41,8 +49,6 @@ export default function Hero() {
 
   return (
     <section id="about" className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between items-center text-center px-6 py-12 sm:px-12 sm:py-20 font-sans tracking-tight">
-      
-      {/* Center Hero Body */}
       <div className="max-w-3xl my-auto py-12 space-y-8 flex flex-col items-center">
         <div className="space-y-3">
           <h1 className="text-4xl sm:text-6xl font-medium tracking-tight text-white">
@@ -63,7 +69,7 @@ export default function Hero() {
           <a
             href={`${PUBLIC_ASSET_BASE_URL}Resume/YohanesHS_Resume.pdf`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="group flex items-center gap-1.5 text-white hover:text-sky-400 transition-colors"
           >
             <span>View Resume</span>
@@ -72,20 +78,19 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Bottom: Centered Dual Marquee */}
       <div className="w-full max-w-4xl space-y-4 pt-8 border-t border-slate-800/60">
-        
-        {/* Row 1: Tech PNG Logos (Moving Right) */}
         <div className="carousel-fade overflow-hidden py-1">
           <div className="animate-scroll-right flex gap-10 items-center">
-            {[...TECH_LOGOS, ...TECH_LOGOS].map((tech, idx) => (
+            {MARQUEE_TECH_LOGOS.map((tech) => (
               <div
-                key={idx}
+                key={tech.marqueeKey}
                 className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-sky-400 transition-colors whitespace-nowrap grayscale hover:grayscale-0"
               >
                 <img
                   src={tech.icon}
-                  alt={tech.name}
+                  alt={`${tech.name} logo`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-5 h-5 object-contain"
                 />
                 <span>{tech.name}</span>
@@ -94,12 +99,11 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Row 2: Skills (Moving Left) */}
         <div className="carousel-fade overflow-hidden py-1">
           <div className="animate-scroll-left flex gap-8 items-center text-xs font-mono text-slate-500 justify-center">
-            {[...SKILLS, ...SKILLS].map((skill, idx) => (
-              <span key={idx} className="hover:text-slate-300 transition-colors whitespace-nowrap">
-                {skill}
+            {MARQUEE_SKILLS.map((skill) => (
+              <span key={skill.marqueeKey} className="hover:text-slate-300 transition-colors whitespace-nowrap">
+                {skill.name}
               </span>
             ))}
           </div>
