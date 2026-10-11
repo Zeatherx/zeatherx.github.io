@@ -8,7 +8,7 @@ const TECH_LOGOS = skillsData.items
   .filter((item) => item.icon)
   .map((tech) => ({ ...tech, icon: `${PUBLIC_ASSET_BASE_URL}${tech.icon.slice(1)}` }));
 const SKILLS = skillsData.items.filter((item) => !item.icon).map((skill) => skill.name);
-const TITLES = heroTitlesData.titles.length > 0 ? heroTitlesData.titles : ['Developer'];
+const TITLES = heroTitlesData.titles;
 
 export default function Hero() {
   const [title, setTitle] = useState('');
@@ -63,11 +63,11 @@ export default function Hero() {
           <a
             href={`${PUBLIC_ASSET_BASE_URL}Resume/YohanesHS_Resume.pdf`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
             className="group flex items-center gap-1.5 text-white hover:text-sky-400 transition-colors"
           >
             <span>View Resume</span>
-            <ArrowUpRight aria-hidden="true" className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-sky-400 transition-colors" />
           </a>
         </div>
       </div>
@@ -80,15 +80,12 @@ export default function Hero() {
           <div className="animate-scroll-right flex gap-10 items-center">
             {[...TECH_LOGOS, ...TECH_LOGOS].map((tech, idx) => (
               <div
-                key={`${tech.name}-${idx}`}
+                key={idx}
                 className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-sky-400 transition-colors whitespace-nowrap grayscale hover:grayscale-0"
               >
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  width="20"
-                  height="20"
-                  loading="lazy"
                   className="w-5 h-5 object-contain"
                 />
                 <span>{tech.name}</span>
@@ -101,7 +98,7 @@ export default function Hero() {
         <div className="carousel-fade overflow-hidden py-1">
           <div className="animate-scroll-left flex gap-8 items-center text-xs font-mono text-slate-500 justify-center">
             {[...SKILLS, ...SKILLS].map((skill, idx) => (
-              <span key={`${skill}-${idx}`} className="hover:text-slate-300 transition-colors whitespace-nowrap">
+              <span key={idx} className="hover:text-slate-300 transition-colors whitespace-nowrap">
                 {skill}
               </span>
             ))}

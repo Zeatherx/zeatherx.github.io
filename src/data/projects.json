@@ -18,14 +18,12 @@
       ],
       "githubUrl": "https://github.com/Zeatherx/HanziTranslator",
       "liveUrl": "https://hanzitranslator.vercel.app/"
-<<<<<<< HEAD
-=======
     },
     {
       "title": "Home Lab Monitoring Dashboard",
       "description": "A lightweight dashboard for tracking services, system health, and network activity across a personal lab.",
       "category": [
-        "Random",
+        "Homelab",
         "Web Development",
         "React"
       ],
@@ -47,13 +45,12 @@
       "title": "Linux Services Lab",
       "description": "Containerized Linux services used to practice deployment, hardening, logging, and incident investigation.",
       "category": [
-        "Random",
+        "Homelab",
         "Cybersecurity",
         "Docker"
       ],
       "githubUrl": "#",
       "liveUrl": "#"
->>>>>>> d047571 (Update Admin Panel)
     }
   ]
 }
