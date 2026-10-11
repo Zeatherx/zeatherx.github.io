@@ -11,15 +11,13 @@
       "liveUrl": "#"
     },
     {
-      "title": "Full-Stack Web Application",
-      "description": "Responsive web platform constructed with React, Node.js, and Tailwind CSS for modern user workflows.",
+      "title": "Hanzi Translator Web",
+      "description": "HanziTranslator is a Chinese reading tool. Enter Hanzi or Pinyin to see tone-marked Pinyin and English definitions for each word.",
       "category": [
-        "Web Development",
-        "React",
-        "Node.js"
+        "Web Development"
       ],
-      "githubUrl": "#",
-      "liveUrl": "#"
+      "githubUrl": "https://github.com/Zeatherx/HanziTranslator",
+      "liveUrl": "https://hanzitranslator.vercel.app/"
     },
     {
       "title": "Home Lab Monitoring Dashboard",
