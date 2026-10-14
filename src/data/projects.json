@@ -18,6 +18,15 @@
       ],
       "githubUrl": "https://github.com/Zeatherx/HanziTranslator",
       "liveUrl": "https://hanzitranslator.vercel.app/"
+    },
+    {
+      "title": "Srt2Mp4 Mobile",
+      "description": "An Android and iOS app that permanently adds SRT subtitles to MP4 videos.",
+      "category": [
+        "App Development"
+      ],
+      "githubUrl": "https://github.com/Zeatherx/Srt2Mp4Mobile",
+      "liveUrl": "#"
     }
   ]
 }
